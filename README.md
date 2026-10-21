@@ -161,11 +161,11 @@ Viewer documentation: https://modelviewer.dev/docs/ . Blender glTF guide: https:
 
 ## Personalize the artist information
 
-Edit `js/profile.js`. `name` updates the header, page title, and footer. `intro`, `bio`, `skills` and `software` are ordinary text/list entries. `education` and `experience` are hidden when empty. All current skills and copy are editable samples; confirm them before publishing for recruitment.
+Edit `js/profile.js`. `name` updates the header, page title, and footer. `nickname` sets the artist alias (currently `LUMN`) in the header and page title. `intro`, `bio`, `skills` and `software` are ordinary text/list entries. `education` and `experience` are hidden when empty. All current skills and copy are editable samples; confirm them before publishing for recruitment.
 
 Put your image in `assets/profile/portrait.webp` and set `image` to that path. Set `imageAlt` to a useful description. Enter your actual email in `email`; it becomes a clickable email link. Enter full HTTPS social URLs. Empty social URLs are clearly marked **ADD YOUR LINK**, not fake links. Remove a social object if you do not want it displayed.
 
-To fully rebrand, change the visible `jb` mark in `index.html` and `assets/profile/mark.svg`, and update the page description in `index.html`. Hero headings and other section copy also live in `index.html`. Colors are the named variables at the top of `css/style.css`.
+To fully rebrand, edit `name` and `nickname` in `js/profile.js`, update the fallback branding in `index.html` and the favicon in `assets/profile/mark.svg`, and update the page description in `index.html`. Hero headings and other section copy also live in `index.html`. Colors are the named variables at the top of `css/style.css`.
 
 ## Preview before publishing
 

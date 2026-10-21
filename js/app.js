@@ -8,8 +8,8 @@
   const image = (src, alt, eager = false) => { const el = document.createElement('img'); el.alt = alt || 'Project artwork'; el.loading = eager ? 'eager' : 'lazy'; el.src = src || fallback; el.onerror = () => { el.onerror = null; el.src = fallback; }; return el; };
   const safeWeb = value => { try { const u = new URL(value); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
   const setText = (s, value) => { $(s).textContent = value || ''; };
-  setText('#brand-name', profile.name); setText('#footer-name', profile.name); setText('#intro', profile.intro); setText('#bio', profile.bio);
-  setText('#year', new Date().getFullYear()); document.title = `${profile.name || 'Your Name'} — 3D Artist`;
+  setText('#brand-alias', profile.nickname || profile.name); setText('#brand-name', profile.name); setText('#footer-name', profile.name); setText('#intro', profile.intro); setText('#bio', profile.bio);
+  setText('#year', new Date().getFullYear()); document.title = `${profile.nickname ? profile.nickname + ' — ' : ''}${profile.name || 'Your Name'} — 3D Artist`;
   const portrait = image(profile.image, profile.imageAlt); portrait.id = 'profile-image'; $('#profile-image').replaceWith(portrait);
   for (const [key, selector] of [['skills', '#skills'], ['software', '#software']]) (profile[key] || []).forEach(v => $(selector).append(text('li', v)));
   for (const key of ['education', 'experience']) if (profile[key]) $('#background').append(text('h3', key.toUpperCase()), text('p', profile[key]));
