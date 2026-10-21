@@ -31,6 +31,23 @@ A dark, responsive, static portfolio built with HTML, CSS, and JavaScript. No bu
 
 The supplied repository uses branch `main`. The ZIP includes Git history. The intended remote is `https://github.com/UnZero2126/3d-portfolio.git`. Hidden files may be invisible in Explorer; do not delete them.
 
+## Upload artwork by category
+
+Both `assets/images/` and `assets/models/` contain these subfolders:
+
+- `environment/`
+- `characters/`
+- `hardsurfacemodel/`
+- `sculpt/`
+- `props/`
+- `other-projects/` (Other Projects; hyphenated for simple web paths)
+
+Upload renders into the matching images folder and GLB models into the matching models folder. For example, use `assets/images/characters/my-character-front.webp` and `assets/models/characters/my-character.glb`. You can create a project subfolder within a category to keep multiple views or GLTF dependencies together.
+
+In GitHub, open the category folder, choose **Add file → Upload files**, then commit the upload. Empty categories contain a `.gitkeep` file so GitHub keeps the folder visible; it is not artwork.
+
+Uploading files does not automatically add gallery cards. After uploading, send the filenames, project title, thumbnail choice, and category so the project list can be connected, or edit `js/projects.js` yourself. Use `Sculpt` as a gallery category for sculpting projects. Videos remain in `assets/videos/`; the shared missing-image fallback remains at `assets/images/fallback.svg`.
+
 ## Run locally on Windows
 
 **Quickest:** double-click `index.html`. Ordinary images, filtering and project dialogs work without a server. Models should be tested over HTTP, not `file://`.
@@ -48,15 +65,15 @@ Visit http://localhost:8000 in your browser. Keep PowerShell open while previewi
 1. Set a camera and lighting. In Blender's Output Properties set your desired resolution, for example 1920 × 1600 for a main render or 1200 × 1000 for a thumbnail.
 2. Render with F12. In the Render Result window choose **Image → Save As**. Save PNG for a lossless master or JPEG for a smaller web image. Blender's interface can vary by version.
 3. Keep master images outside the website. Export an optimized JPEG/WebP copy using your image editor. Aim for roughly 150–500 KB per thumbnail and under 1 MB per large render when practical; these are recommendations, not platform limits. PNG is fine for transparency but often larger.
-4. Put files in `assets/images/`. Use lowercase, descriptive, hyphenated filenames: `robot-front.webp`, `robot-back.webp`, `robot-wireframe.webp`.
+4. Put files in the appropriate category subfolder, such as `assets/images/characters/`. Use lowercase, descriptive, hyphenated filenames: `robot-front.webp`, `robot-back.webp`, `robot-wireframe.webp`.
 5. Edit the project object in `js/projects.js`:
 
 ```javascript
-thumbnail: 'assets/images/robot-front.webp',
+thumbnail: 'assets/images/characters/robot-front.webp',
 images: [
-  { src: 'assets/images/robot-front.webp', alt: 'Robot — front view' },
-  { src: 'assets/images/robot-back.webp', alt: 'Robot — rear view' },
-  { src: 'assets/images/robot-wireframe.webp', alt: 'Robot — topology breakdown' }
+  { src: 'assets/images/characters/robot-front.webp', alt: 'Robot — front view' },
+  { src: 'assets/images/characters/robot-back.webp', alt: 'Robot — rear view' },
+  { src: 'assets/images/characters/robot-wireframe.webp', alt: 'Robot — topology breakdown' }
 ],
 ```
 
@@ -74,20 +91,20 @@ Here is a complete example using the already included files. Replace paths and d
   title: 'My First Project',
   category: 'Props',
   description: 'Describe your goal, your process, and what you contributed.',
-  thumbnail: 'assets/images/orbit.webp',
+  thumbnail: 'assets/images/other-projects/orbit.webp',
   images: [
-    { src: 'assets/images/orbit.webp', alt: 'Front view' },
-    { src: 'assets/images/orbit-detail.webp', alt: 'Alternate view' }
+    { src: 'assets/images/other-projects/orbit.webp', alt: 'Front view' },
+    { src: 'assets/images/other-projects/orbit-detail.webp', alt: 'Alternate view' }
   ],
   videos: [{
     src: 'assets/videos/orbit-turntable.mp4',
-    poster: 'assets/images/orbit.webp',
+    poster: 'assets/images/other-projects/orbit.webp',
     caption: '360-degree turntable',
     captions: ''
   }],
   embeds: [],
-  model: 'assets/models/orbit.glb',
-  modelPoster: 'assets/images/orbit.webp',
+  model: 'assets/models/other-projects/orbit.glb',
+  modelPoster: 'assets/images/other-projects/orbit.webp',
   software: ['Blender', 'Substance 3D Painter'],
   type: 'Personal project',
   credits: '',
@@ -99,19 +116,19 @@ Here is a complete example using the already included files. Replace paths and d
 
 Change `placeholder` to `false` only after replacing all sample content. Set `featured: true` on one project to put it in the hero; the first featured project wins. If none is featured, the first project is used. Reorder blocks to reorder the gallery. Delete a complete block to remove it. Keep commas between blocks and strings in quotes. Use `\'` for an apostrophe inside a single-quoted string, or wrap that string in double quotes.
 
-Filters are built automatically. Use `Character Art`, `Hard Surface`, `Props`, `Environments`, or `Other Projects`. You can add any other category by typing it into `category`; matching is case-sensitive. Empty optional fields are hidden. Use `images: []`, `videos: []`, `embeds: []`, `model: ''`, `software: []`, or omit those properties entirely. Every project should have an id, title, category, description, and thumbnail.
+Filters are built automatically. Use `Character Art`, `Hard Surface`, `Props`, `Environments`, `Sculpt`, or `Other Projects`. You can add any other category by typing it into `category`; matching is case-sensitive. Empty optional fields are hidden. Use `images: []`, `videos: []`, `embeds: []`, `model: ''`, `software: []`, or omit those properties entirely. Every project should have an id, title, category, description, and thumbnail.
 
 ## MP4 videos and turntables
 
 1. Export your animation as MP4 with H.264 video and yuv420p pixel format for broad browser support. AAC is appropriate for audio. Web browsers do not reliably play Blender source files, AVI, or every MOV codec.
 2. Put the MP4 into `assets/videos/`, for example `robot-turntable.mp4`.
-3. Save a representative still frame to `assets/images/robot-poster.webp`.
+3. Save a representative still frame to `assets/images/characters/robot-poster.webp`.
 4. Update the project's video list:
 
 ```javascript
 videos: [{
   src: 'assets/videos/robot-turntable.mp4',
-  poster: 'assets/images/robot-poster.webp',
+  poster: 'assets/images/characters/robot-poster.webp',
   caption: 'Robot turntable — modeling and texturing by me',
   captions: ''
 }],
@@ -143,17 +160,17 @@ The site loads Google's open-source `<model-viewer>` (pinned version 4.1.0) from
 1. In Blender, make a web-friendly copy of your model. Apply intended transforms, remove unused objects, and simplify excessive geometry.
 2. Use glTF-compatible PBR materials. Bake complex procedural materials into textures; Blender-specific nodes may not export as expected. Prefer modest texture dimensions (often 1024 or 2048 pixels).
 3. Choose **File → Export → glTF 2.0** and select **glTF Binary (.glb)**. Export selected objects if needed. Enable animation export when relevant. Menu details can vary by Blender version.
-4. Put it in `assets/models/robot.glb`. A GLB normally packs mesh and textures into one file.
+4. Put it in `assets/models/characters/robot.glb`. A GLB normally packs mesh and textures into one file.
 5. Set:
 
 ```javascript
-model: 'assets/models/robot.glb',
-modelPoster: 'assets/images/robot-front.webp',
+model: 'assets/models/characters/robot.glb',
+modelPoster: 'assets/images/characters/robot-front.webp',
 ```
 
 No extra configuration is needed for a standard GLB. The provided `orbit.glb` is a real sample to test rotation/zoom. This site supports model inspection; use an MP4 for reliable animation playback, as no animation-selection UI is included.
 
-For `.gltf`, keep its referenced `.bin` and texture files in the relative locations encoded by the export. Upload ALL of them. Set `model: 'assets/models/robot/scene.gltf'`. A missing texture or BIN can break the viewer. Prefer GLB for a beginner workflow. `.blend`, `.fbx`, `.obj`, and `.stl` are not accepted directly by this viewer; convert them to glTF/GLB first. Aim for a few MB per model when practical. Always test on a phone.
+For `.gltf`, keep its referenced `.bin` and texture files in the relative locations encoded by the export. Upload ALL of them. Set `model: 'assets/models/characters/robot/scene.gltf'`. A missing texture or BIN can break the viewer. Prefer GLB for a beginner workflow. `.blend`, `.fbx`, `.obj`, and `.stl` are not accepted directly by this viewer; convert them to glTF/GLB first. Aim for a few MB per model when practical. Always test on a phone.
 
 An external model may require CORS permission on its host. Local relative model paths avoid that issue. The CDN viewer is the only optional runtime library; ordinary portfolio content works without it. You may self-host a tested model-viewer distribution later by changing its script URL in `js/app.js`; preserve its license.
 
