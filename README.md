@@ -1,4 +1,4 @@
-# Janmar Brojan · 3D Portfolio
+# Railey · 3D Portfolio
 
 A dark, responsive, static portfolio built with HTML, CSS, and JavaScript. No build, database, account system, API key, or paid service is required. Includes six clearly labeled original sample projects, still galleries, a real silent MP4 turntable, and an original GLB model.
 
