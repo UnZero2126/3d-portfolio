@@ -25,9 +25,22 @@
     visible.forEach(p => { const a = document.createElement('a'); a.className = 'card'; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
     if (!visible.length) $('#gallery').append(text('p', 'New work is on its way.', 'empty'));
     setText('#results', `${visible.length} projects shown`);
-    $('#filters').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.textContent === active)));
+    $('#filters').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === active)));
   }
-  categories.forEach(category => { const b = text('button', category); b.type = 'button'; b.onclick = () => { active = category; renderGallery(); }; $('#filters').append(b); }); renderGallery();
+  categories.forEach(category => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'category-tile'; b.dataset.category = category;
+    b.setAttribute('aria-label', category);
+    const preview = category === 'All work' ? featured : projects.find(p => (p.category || 'Other Projects') === category);
+    const visual = text('span', '', 'category-visual');
+    if (preview) { const img = image(preview.thumbnail, ''); img.alt = ''; visual.append(img); }
+    visual.append(text('span', '', 'category-shade'));
+    const caption = text('span', '', 'category-caption');
+    caption.append(text('span', category, 'category-name'), text('span', '↗', 'category-arrow'));
+    visual.append(caption); b.append(visual);
+    b.onclick = () => { active = category; renderGallery(); };
+    $('#filters').append(b);
+  }); renderGallery();
   const dialog = $('#project-dialog'); let previousFocus; let currentId; let viewerPromise;
   function loadViewer() {
     if (customElements.get('model-viewer')) return Promise.resolve();
