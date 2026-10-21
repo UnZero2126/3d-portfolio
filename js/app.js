@@ -49,6 +49,42 @@
     return viewerPromise;
   }
   function stopMedia() { dialog.querySelectorAll('video').forEach(v => v.pause()); dialog.querySelectorAll('iframe').forEach(f => f.remove()); }
+
+  const zoomDialog = document.createElement('dialog');
+  zoomDialog.className = 'image-viewer'; zoomDialog.setAttribute('aria-label', 'Artwork image viewer');
+  const zoomToolbar = text('div', '', 'zoom-toolbar');
+  const zoomLabel = text('span', 'Image zoom'); zoomLabel.setAttribute('role', 'status');
+  const zoomStage = text('div', '', 'zoom-stage'); zoomStage.tabIndex = 0; zoomStage.setAttribute('aria-label', 'Image area. Scroll to inspect enlarged artwork.');
+  const zoomImage = document.createElement('img'); zoomImage.draggable = false;
+  zoomStage.append(zoomImage);
+  let zoom = 1, fitWidth = 1, zoomTrigger;
+  function setZoom(value) {
+    zoom = Math.max(1, Math.min(4, value));
+    zoomImage.style.width = (fitWidth * zoom) + 'px';
+    zoomLabel.textContent = Math.round(zoom * 100) + '% of fitted size';
+    if (zoom === 1) { zoomStage.scrollTop = 0; zoomStage.scrollLeft = 0; }
+  }
+  function fitImage() {
+    if (!zoomImage.naturalWidth) return;
+    fitWidth = Math.min(zoomImage.naturalWidth, Math.max(1, zoomStage.clientWidth - 24), Math.max(1, zoomStage.clientHeight - 24) * zoomImage.naturalWidth / zoomImage.naturalHeight);
+    setZoom(1);
+  }
+  function zoomButton(label, action) { const b = text('button', label); b.type = 'button'; b.onclick = action; return b; }
+  const zoomClose = zoomButton('Close ×', () => zoomDialog.close());
+  zoomToolbar.append(zoomLabel, zoomButton('−', () => setZoom(zoom - .5)), zoomButton('+', () => setZoom(zoom + .5)), zoomButton('Fit', fitImage), zoomClose);
+  zoomToolbar.children[1].setAttribute('aria-label', 'Zoom out');
+  zoomToolbar.children[2].setAttribute('aria-label', 'Zoom in');
+  zoomDialog.append(zoomToolbar, zoomStage); document.body.append(zoomDialog);
+  zoomImage.onload = fitImage;
+  zoomImage.onerror = () => { zoomLabel.textContent = 'Image could not load. Close and try again.'; };
+  zoomDialog.addEventListener('close', () => { if (zoomTrigger?.isConnected && dialog.open) zoomTrigger.focus({preventScroll:true}); });
+  window.addEventListener('resize', () => { if (zoomDialog.open) fitImage(); });
+  function openImage(src, alt, trigger) {
+    zoomTrigger = trigger; zoomImage.alt = alt || 'Artwork'; zoomLabel.textContent = 'Loading image…';
+    zoomImage.style.width = 'auto'; zoomImage.src = src; zoomDialog.showModal(); zoomClose.focus();
+    if (zoomImage.complete && zoomImage.naturalWidth) fitImage();
+  }
+
   function showProject(p) {
     if (currentId === p.id && dialog.open) return;
     previousFocus = document.activeElement; currentId = p.id; stopMedia();
@@ -58,7 +94,7 @@
     if (p.description) head.append(text('p', p.description, 'project-description'));
     const dl = text('dl', '', 'project-meta'); [['TOOLS', (p.software || []).join(' / ')], ['PROJECT', p.type], ['YEAR', p.year], ['CREDITS', p.credits]].forEach(([k, v]) => { if (v) { const pair = document.createElement('div'); pair.append(text('dt', k), text('dd', v)); dl.append(pair); } }); if (dl.children.length) head.append(dl); content.append(head);
     const media = text('div', '', 'project-media');
-    (p.images || []).filter(i => i.src).forEach(i => { const fig = document.createElement('figure'); fig.append(image(i.src, i.alt)); if (i.alt) fig.append(text('figcaption', i.alt)); media.append(fig); });
+    (p.images || []).filter(i => i.src).forEach(i => { const fig = document.createElement('figure'); const open = text('button', '', 'image-zoom-trigger'); open.type = 'button'; open.setAttribute('aria-label', 'Enlarge ' + (i.alt || p.title)); open.append(image(i.src, i.alt), text('span', 'Click to zoom +', 'zoom-hint')); open.onclick = () => openImage(i.src, i.alt || p.title, open); fig.append(open); if (i.alt) fig.append(text('figcaption', i.alt)); media.append(fig); });
     (p.videos || []).filter(v => v.src).forEach(v => { const fig = document.createElement('figure'); const video = document.createElement('video'); video.controls = true; video.playsInline = true; video.preload = 'none'; video.poster = v.poster || p.thumbnail || fallback; video.src = v.src; video.setAttribute('aria-label', v.caption || p.title + ' video'); if (v.captions) { const track = document.createElement('track'); track.kind = 'captions'; track.srclang = 'en'; track.label = 'English'; track.src = v.captions; video.append(track); } video.onerror = () => { video.replaceWith(image(v.poster || p.thumbnail, 'Video preview unavailable')); fig.append(text('p', 'This video could not load. Please try again later.', 'media-status')); }; fig.append(video); if (v.caption) fig.append(text('figcaption', v.caption)); media.append(fig); });
     (p.embeds || []).forEach(e => { const url = safeWeb(e.url); if (!url) return; const u = new URL(url); if (!((['www.youtube.com','www.youtube-nocookie.com'].includes(u.hostname) && u.pathname.startsWith('/embed/')) || (u.hostname === 'player.vimeo.com' && u.pathname.startsWith('/video/')))) return; const fig = document.createElement('figure'); const b = text('button', 'Load external video ↗', 'media-button'); b.onclick = () => { const frame = document.createElement('iframe'); frame.src = url; frame.title = e.title || p.title + ' video'; frame.allowFullscreen = true; frame.allow = 'fullscreen; picture-in-picture'; frame.referrerPolicy = 'strict-origin-when-cross-origin'; b.replaceWith(frame); }; fig.append(b, text('figcaption', e.title || 'External video loads only when selected.')); media.append(fig); });
     if (p.model) {
@@ -73,7 +109,7 @@
     if (!media.children.length) media.append(image(p.thumbnail, p.title)); content.append(media);
     if (!dialog.open) dialog.showModal(); document.body.classList.add('modal-open'); dialog.scrollTop = 0; $('#close-project').focus();
   }
-  function closeProject(updateHash = true) { stopMedia(); if (dialog.open) dialog.close(); currentId = null; document.body.classList.remove('modal-open'); if (updateHash && location.hash.startsWith('#project/')) history.replaceState(null, '', '#work'); if (previousFocus?.isConnected) previousFocus.focus({preventScroll:true}); }
+  function closeProject(updateHash = true) { if (zoomDialog.open) zoomDialog.close(); stopMedia(); if (dialog.open) dialog.close(); currentId = null; document.body.classList.remove('modal-open'); if (updateHash && location.hash.startsWith('#project/')) history.replaceState(null, '', '#work'); if (previousFocus?.isConnected) previousFocus.focus({preventScroll:true}); }
   function route() { if (location.hash.startsWith('#project/')) { let id; try { id = decodeURIComponent(location.hash.slice(9)); } catch { closeProject(); return; } const p = projects.find(p => p.id === id); if (p) showProject(p); else closeProject(); } else if (dialog.open) closeProject(false); }
   $('#close-project').onclick = () => closeProject(); dialog.addEventListener('cancel', e => { e.preventDefault(); closeProject(); }); dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeProject(); } }); window.addEventListener('hashchange', route); route();
 })();
