@@ -22,14 +22,7 @@
   const categories = ['All work', ...new Set(projects.map(p => p.category || 'Other Projects'))];
   function renderGallery() {
     $('#gallery').replaceChildren(); const visible = projects.filter(p => active === 'All work' || (p.category || 'Other Projects') === active);
-    if (active === 'All work') visible.sort((a, b) => categories.indexOf(a.category || 'Other Projects') - categories.indexOf(b.category || 'Other Projects'));
-    let previousCategory = '';
     visible.forEach(p => {
-      const category = p.category || 'Other Projects';
-      if (active === 'All work' && category !== previousCategory) {
-        $('#gallery').append(text('h3', category, 'gallery-group-title'));
-        previousCategory = category;
-      }
       const a = document.createElement('a'); a.className = 'card'; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
     if (!visible.length) $('#gallery').append(text('p', 'New work is on its way.', 'empty'));
     setText('#results', `${visible.length} projects shown`);
