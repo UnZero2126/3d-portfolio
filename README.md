@@ -1,6 +1,14 @@
 # Railey · 3D Portfolio
 
-A dark, responsive, static portfolio built with HTML, CSS, and JavaScript. No build, database, account system, API key, or paid service is required. Includes six clearly labeled original sample projects, still galleries, a real silent MP4 turntable, and an original GLB model.
+A dark, responsive, static portfolio built with HTML, CSS, and JavaScript. No build, database, account system, API key, or paid service is required. Includes the artist’s uploaded projects with multi-view galleries and videos. The Props sample remains until original prop artwork is added.
+
+## Current portfolio organization
+
+Each subject folder becomes one project with all its image views: Analyn, Rai, Kael Drakthorne, Dodge Challenger, Lamborghini Aventador, Stylized Car and Stylized Horse Cart. Ruins Environment is featured. The three images directly inside `2D Artworks/` are separate entries with filename-based titles until named. Aircraft Cinematic and Cave Ruins have separate video entries.
+
+Only the Props sample remains in the gallery. Unused demo source files are retained for the examples below; they are not displayed in populated categories. Original uploads remain unchanged. `assets/images/previews/` contains generated lightweight thumbnails and video posters, not new projects; do not upload original artwork there.
+
+When adding more views, put them inside the matching subject folder. Add a new subject folder for a new project. Update `js/projects.js` or ask for the uploads to be connected; the gallery does not scan GitHub folders automatically.
 
 ## Start here
 
@@ -188,7 +196,7 @@ To fully rebrand, edit `name` and `nickname` in `js/profile.js`, update the fall
 
 Start the local server and check:
 
-- All six categories/filters work and the correct cards appear.
+- All category filters work and the correct cards appear.
 - Clicking each card opens its project; Escape and Close dismiss it.
 - Tab reaches links, filters, and dialog controls with a visible outline.
 - Images, MP4 playback, and model rotation work. Test the viewer while online.
