@@ -4,7 +4,7 @@ window.PROFILE = {
   name: 'Jann Railey De Chavez',
   nickname: 'LUMN', // Artist alias shown in the header and page title.
   intro: 'I’m Jann Railey De Chavez, also known as LUMN. My work covers 3D modelling, sculpting, texturing, lighting, compositing and animation.',
-  bio: 'I’m a 3D artist working across modelling, sculpting, texturing, lighting, compositing and animation. I use Blender, Substance 3D Painter, Gaea and Photoshop to create and develop my projects.',
+  bio: 'I’m a fourth-year Bachelor of Science in Entertainment and Multimedia Computing student and a freelance 3D artist. My work spans 3D modelling, sculpting, texturing, lighting, compositing and animation. I use Blender, Substance 3D Painter, Gaea and Photoshop to develop my projects.',
   image: 'assets/images/characters/sentinel.webp',
   imageAlt: 'Original sample robot bust; replace with your portrait or artwork',
   skills: ['3D Modelling', 'Sculpting', 'Texturing', 'Lighting', 'Compositing', 'Animation'],
@@ -13,6 +13,7 @@ window.PROFILE = {
   experience: '', // Optional; hidden when empty.
   email: 'jannrailey852@gmail.com',
   socials: [
+    { label: 'VGen', url: 'https://vgen.co/LUMN' },
     { label: 'ArtStation', url: 'https://www.artstation.com/lumn3d' },
     { label: 'Instagram', url: 'https://www.instagram.com/r.lumn/' }
   ]
