@@ -2,7 +2,7 @@
    Keep every id unique, using lowercase words and hyphens.
    Paths start at the website root: assets/images/characters/your-file.webp (NO leading slash).
    Optional arrays can be [] and optional strings can be ''. They will be hidden.
-   All supplied artwork is ORIGINAL PLACEHOLDER content, not work by the artist.
+   Entries marked placeholder: true contain original demonstration artwork.
    Set placeholder: false after replacing ALL sample content in that project.
    Categories are automatic; use consistent spelling to avoid duplicate filters.
 */
@@ -49,10 +49,11 @@ window.PROJECTS = [
     software: ['Procedural mesh'], type: 'Material study · sample', placeholder: true
   },
   {
-    id: 'passage', title: 'Quiet passage', category: 'Environments',
-    description: 'Repetition, shadow, and a single point of light. An architectural blockout that demonstrates an environment project presentation.',
-    thumbnail: 'assets/images/environment/passage.webp', images: [{ src: 'assets/images/environment/passage.webp', alt: 'Colonnade with repeated columns and a central orb' }],
-    software: ['Procedural mesh'], type: 'Environment study · sample', placeholder: true
+    id: 'ruins-environment', title: 'Ruins Environment', category: 'Environments',
+    description: '',
+    thumbnail: 'assets/images/environment/Ruins_Environment.png',
+    images: [{ src: 'assets/images/environment/Ruins_Environment.png', alt: 'Ruins Environment — environment artwork' }],
+    software: [], placeholder: false
   },
   {
     id: 'motion', title: 'Cycles', category: 'Other Projects',
