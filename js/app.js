@@ -17,12 +17,20 @@
   else $('#email').append(text('span', 'Your email goes here', 'placeholder-contact'));
   (profile.socials || []).forEach(s => { const href = safeWeb(s.url); if (href) { const a = text('a', s.label + ' ↗'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; $('#socials').append(a); } else { const el = text('span', s.label, 'social-placeholder'); el.append(text('small', 'ADD YOUR LINK')); $('#socials').append(el); } });
   const featured = projects.find(p => p.featured) || projects[0];
-  if (featured) { $('#featured-link').href = '#project/' + encodeURIComponent(featured.id); const img = image(featured.thumbnail, featured.title, true); img.id = 'featured-image'; img.fetchPriority = 'high'; $('#featured-image').replaceWith(img); setText('#featured-title', featured.title); setText('#featured-category', featured.category); $('.art-top').lastElementChild.textContent = '01 / ' + String(projects.length).padStart(2, '0'); }
+  if (featured) { $('#featured-link').href = '#project/' + encodeURIComponent(featured.id); const img = image(featured.heroImage || featured.images?.[0]?.src || featured.thumbnail, featured.title, true); img.id = 'featured-image'; img.fetchPriority = 'high'; $('#featured-image').replaceWith(img); setText('#featured-title', featured.title); setText('#featured-category', featured.category); $('.art-top').lastElementChild.textContent = '01 / ' + String(projects.length).padStart(2, '0'); }
   let active = 'All work';
   const categories = ['All work', ...new Set(projects.map(p => p.category || 'Other Projects'))];
   function renderGallery() {
     $('#gallery').replaceChildren(); const visible = projects.filter(p => active === 'All work' || (p.category || 'Other Projects') === active);
-    visible.forEach(p => { const a = document.createElement('a'); a.className = 'card'; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
+    if (active === 'All work') visible.sort((a, b) => categories.indexOf(a.category || 'Other Projects') - categories.indexOf(b.category || 'Other Projects'));
+    let previousCategory = '';
+    visible.forEach(p => {
+      const category = p.category || 'Other Projects';
+      if (active === 'All work' && category !== previousCategory) {
+        $('#gallery').append(text('h3', category, 'gallery-group-title'));
+        previousCategory = category;
+      }
+      const a = document.createElement('a'); a.className = 'card'; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
     if (!visible.length) $('#gallery').append(text('p', 'New work is on its way.', 'empty'));
     setText('#results', `${visible.length} projects shown`);
     $('#filters').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === active)));
