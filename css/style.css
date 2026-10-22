@@ -42,3 +42,8 @@
 .project-sequence .sequence-player video{height:calc(100% - 48px);aspect-ratio:auto}
 @media(max-width:900px){.film-feature{grid-template-columns:1fr}.film-feature-copy{gap:15px}.film-feature-copy .film-project-link{margin-top:0}}
 @media(max-width:650px){.hero-copy .intro{text-align:left;align-self:flex-start;margin:0}.film-section .section-heading{grid-template-columns:1fr}.film-section .section-heading>p{text-align:left;max-width:100%;margin-left:0}.film-cast--duo{grid-template-columns:1fr 1fr}.film-cast--duo a:first-child{grid-column:auto}.film-cast--duo a:first-child img,.film-cast--duo img{height:clamp(220px,55vw,330px)}.film-media{aspect-ratio:auto;min-height:210px}.film-embed{aspect-ratio:16/9;min-height:0}.film-embed iframe{aspect-ratio:16/9}.film-media .sequence-player{min-height:230px}.film-feature-copy{padding:24px}.project-sequence{aspect-ratio:auto;min-height:240px}.sequence-controls{font-size:11px}}
+
+/* Let the profile photograph dissolve into the site's background rather than ending abruptly. */
+.portrait{background:var(--bg)}
+.portrait img{-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%)}
+.portrait>span{background:var(--bg)}
