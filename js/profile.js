@@ -5,8 +5,8 @@ window.PROFILE = {
   nickname: 'LUMN', // Artist alias shown in the header and page title.
   intro: 'I’m Jann Railey De Chavez, also known as LUMN. My work covers 3D modelling, sculpting, texturing, lighting, compositing and animation. I am a TESDA NC III passer in 3D Animation and accept commissions through VGen.',
   bio: 'I’m a fourth-year Bachelor of Science in Entertainment and Multimedia Computing student and a freelance 3D artist. I am also a TESDA NC III passer in 3D Animation and accept commissions through VGen. My work spans 3D modelling, sculpting, texturing, lighting, compositing and animation. I use Blender, Substance 3D Painter, Gaea and Photoshop to develop my projects.',
-  image: 'assets/images/previews/kael-drakthorne.webp',
-  imageAlt: 'Kael Drakthorne character sculpt by LUMN',
+  image: 'assets/profile/PortfolioPic.png',
+  imageAlt: 'Profile portrait of Jann Railey De Chavez (LUMN)',
   skills: ['3D Modelling', 'Sculpting', 'Texturing', 'Lighting', 'Compositing', 'Animation'],
   software: ['Blender', 'Substance 3D Painter', 'Gaea', 'Photoshop'],
   education: '', // e.g. 'BSEMC · FAITH Colleges · Expected graduation 2027'
