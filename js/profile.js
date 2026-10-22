@@ -15,6 +15,7 @@ window.PROFILE = {
   socials: [
     { label: 'VGen', url: 'https://vgen.co/LUMN' },
     { label: 'ArtStation', url: 'https://www.artstation.com/lumn3d' },
-    { label: 'Instagram', url: 'https://www.instagram.com/r.lumn/' }
+    { label: 'Instagram', url: 'https://www.instagram.com/r.lumn/' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jann-railey-de-chavez-b08369446/' }
   ]
 };
