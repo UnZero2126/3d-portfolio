@@ -23,7 +23,7 @@
   function renderGallery() {
     $('#gallery').replaceChildren(); const visible = projects.filter(p => active === 'All work' || (p.category || 'Other Projects') === active);
     visible.forEach(p => {
-      const a = document.createElement('a'); a.className = 'card'; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
+      const a = document.createElement('a'); a.className = 'card'; a.dataset.category = p.category; a.href = '#project/' + encodeURIComponent(p.id); const wrap = text('div', '', 'card-image'); wrap.append(image(p.thumbnail, p.title)); if (p.placeholder) wrap.append(text('span', 'SAMPLE STUDY', 'card-badge')); const arrow = text('span', p.videos?.length ? '▷' : '↗', 'card-arrow'); arrow.setAttribute('aria-hidden', 'true'); wrap.append(arrow); const title = text('div', '', 'card-title'); const label = document.createElement('div'); label.append(text('h3', p.title), text('small', p.category || 'Other Projects')); title.append(label, text('span', String(projects.indexOf(p) + 1).padStart(2, '0'), 'card-number')); a.append(wrap, title); $('#gallery').append(a); });
     if (!visible.length) $('#gallery').append(text('p', 'New work is on its way.', 'empty'));
     setText('#results', `${visible.length} projects shown`);
     $('#filters').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === active)));
@@ -113,3 +113,4 @@
   function route() { if (location.hash.startsWith('#project/')) { let id; try { id = decodeURIComponent(location.hash.slice(9)); } catch { closeProject(); return; } const p = projects.find(p => p.id === id); if (p) showProject(p); else closeProject(); } else if (dialog.open) closeProject(false); }
   $('#close-project').onclick = () => closeProject(); dialog.addEventListener('cancel', e => { e.preventDefault(); closeProject(); }); dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeProject(); } }); window.addEventListener('hashchange', route); route();
 })();
+

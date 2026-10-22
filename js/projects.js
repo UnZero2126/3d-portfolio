@@ -1,4 +1,4 @@
-/* One project per subject folder. Update this list after adding uploads. */
+/* One project per subject folder. Original assets remain available in the detail viewer. */
 window.PROJECTS = [
   {
     "id": "ruins-environment",
@@ -18,6 +18,90 @@ window.PROJECTS = [
       "Blender",
       "Arborea"
     ]
+  },
+  {
+    "id": "echo",
+    "title": "Echo",
+    "category": "Character Art",
+    "thumbnail": "assets/images/previews/echo.webp",
+    "images": [
+      {
+        "src": "assets/images/characters/Echo/RenderPose.png",
+        "alt": "Echo — posed render"
+      },
+      {
+        "src": "assets/images/characters/Echo/Back.png",
+        "alt": "Echo — Back"
+      },
+      {
+        "src": "assets/images/characters/Echo/Front.png",
+        "alt": "Echo — Front"
+      },
+      {
+        "src": "assets/images/characters/Echo/Side.png",
+        "alt": "Echo — Side"
+      },
+      {
+        "src": "assets/images/characters/EchoConcept.png",
+        "alt": "Echo — concept design by Elaghast"
+      }
+    ],
+    "description": "Echo is the main character in “The Empty Frame,” our upcoming animated film by Impastory Studios and Marionette Motion. I created the 3D model and rig.",
+    "credits": "Concept design by Elaghast. Texturing by Prinz. 3D modelling and rigging by Jann Railey De Chavez (LUMN).",
+    "type": "The Empty Frame · Animated film",
+    "placeholder": false
+  },
+  {
+    "id": "nerissa",
+    "title": "Nerissa",
+    "category": "Character Art",
+    "thumbnail": "assets/images/previews/nerissa.webp",
+    "images": [
+      {
+        "src": "assets/images/characters/Nerissa/Front.png",
+        "alt": "Nerissa — Front"
+      },
+      {
+        "src": "assets/images/characters/Nerissa/Back.png",
+        "alt": "Nerissa — Back"
+      },
+      {
+        "src": "assets/images/characters/Nerissa/Side.png",
+        "alt": "Nerissa — Side"
+      }
+    ],
+    "description": "Nerissa is Echo’s mother in “The Empty Frame,” our upcoming animated film by Impastory Studios and Marionette Motion. I created the 3D model and rig.",
+    "credits": "Texturing by Prinz. 3D modelling and rigging by Jann Railey De Chavez (LUMN).",
+    "type": "The Empty Frame · Animated film",
+    "placeholder": false
+  },
+  {
+    "id": "prof-milana",
+    "title": "Prof. Milana",
+    "category": "Character Art",
+    "thumbnail": "assets/images/previews/prof-milana.webp",
+    "images": [
+      {
+        "src": "assets/images/characters/Prof. Milana/RenderPose.png",
+        "alt": "Prof. Milana — posed render"
+      },
+      {
+        "src": "assets/images/characters/Prof. Milana/Back.png",
+        "alt": "Prof. Milana — Back"
+      },
+      {
+        "src": "assets/images/characters/Prof. Milana/Front.png",
+        "alt": "Prof. Milana — Front"
+      },
+      {
+        "src": "assets/images/characters/Prof. Milana/Side.png",
+        "alt": "Prof. Milana — Side"
+      }
+    ],
+    "description": "Prof. Milana is Echo’s teacher in “The Empty Frame,” our upcoming animated film by Impastory Studios and Marionette Motion. I created the 3D model and rig.",
+    "credits": "Texturing by Prinz. 3D modelling and rigging by Jann Railey De Chavez (LUMN).",
+    "type": "The Empty Frame · Animated film",
+    "placeholder": false
   },
   {
     "id": "analyn",
@@ -59,7 +143,7 @@ window.PROJECTS = [
       }
     ],
     "placeholder": false,
-    "description": "I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
+    "description": "Analyn is Rai’s mother in “Puppet Strings,” an animated film by Marionette Motion. I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
     "credits": "Character design by Elaghast. 3D modelling, rigging and texturing by Jann Railey De Chavez (LUMN).",
     "software": [
       "Blender",
@@ -98,7 +182,7 @@ window.PROJECTS = [
       }
     ],
     "placeholder": false,
-    "description": "I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
+    "description": "Rai is the main character in “Puppet Strings,” an animated film by Marionette Motion. I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
     "credits": "Character design by Elaghast. 3D modelling, rigging and texturing by Jann Railey De Chavez (LUMN).",
     "software": [
       "Blender",
@@ -420,19 +504,6 @@ window.PROJECTS = [
       "Blender"
     ],
     "placeholder": false
-  },
-  {
-    "id": "vessel",
-    "title": "Earthen",
-    "category": "Props",
-    "description": "An original demonstration prop. This sample remains until your own prop artwork is uploaded.",
-    "thumbnail": "assets/images/props/vessel.webp",
-    "images": [
-      {
-        "src": "assets/images/props/vessel.webp",
-        "alt": "Sample terracotta vessel"
-      }
-    ],
-    "placeholder": true
   }
 ];
+
