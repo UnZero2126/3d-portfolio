@@ -418,7 +418,7 @@ window.PROJECTS = [
       }
     ],
     "description": "A continuous sequence of Scenes 14, 16 and 17 from The Empty Frame. Select Play to watch all three clips consecutively.",
-    "credits": "Animation Director: Jann Railey De Chavez (LUMN). Animated film by Impastory Studios & Marionette Motion.",
+    "credits": "Animation Director, 3D Animator, Character Modeller and Rigger: Jann Railey De Chavez (LUMN). Animated film by Impastory Studios & Marionette Motion.",
     "type": "The Empty Frame · Animated film",
     "placeholder": false
   },
