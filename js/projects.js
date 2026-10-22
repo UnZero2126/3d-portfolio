@@ -1,9 +1,4 @@
-/* One project per subject folder; multiple renders belong in its images array.
-   Images in the category root are separate artworks unless grouped explicitly.
-   Preview WebPs are optimized derivatives; keep your originals in their subject folders.
-   Uploading files alone does not update this list. Update it or ask to sync new uploads.
-   placeholder: true marks a demo retained only for a category without original artwork.
-*/
+/* One project per subject folder. Update this list after adding uploads. */
 window.PROJECTS = [
   {
     "id": "ruins-environment",
@@ -17,7 +12,12 @@ window.PROJECTS = [
       }
     ],
     "featured": true,
-    "placeholder": false
+    "placeholder": false,
+    "description": "Created in Blender, with vegetation added using Arborea.",
+    "software": [
+      "Blender",
+      "Arborea"
+    ]
   },
   {
     "id": "analyn",
@@ -58,7 +58,13 @@ window.PROJECTS = [
         "alt": "Analyn — Analyn zoom"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
+    "credits": "Character design by Elaghast. 3D modelling, rigging and texturing by Jann Railey De Chavez (LUMN).",
+    "software": [
+      "Blender",
+      "Substance 3D Painter"
+    ]
   },
   {
     "id": "rai",
@@ -91,7 +97,13 @@ window.PROJECTS = [
         "alt": "Rai — zoom"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "I created the 3D model and rig in Blender, with texturing completed in Blender and Substance 3D Painter.",
+    "credits": "Character design by Elaghast. 3D modelling, rigging and texturing by Jann Railey De Chavez (LUMN).",
+    "software": [
+      "Blender",
+      "Substance 3D Painter"
+    ]
   },
   {
     "id": "kael-drakthorne",
@@ -120,7 +132,11 @@ window.PROJECTS = [
         "alt": "Kael Drakthorne — zoom"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "A character sculpt created in Blender, where I also completed the retopology.",
+    "software": [
+      "Blender"
+    ]
   },
   {
     "id": "dodge-challenger",
@@ -141,7 +157,11 @@ window.PROJECTS = [
         "alt": "Dodge Challenger — Dodge Challenger1 Clay"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "Modelled entirely in Blender, with procedural materials and textures created in Blender.",
+    "software": [
+      "Blender"
+    ]
   },
   {
     "id": "lamborghini-aventador",
@@ -158,7 +178,11 @@ window.PROJECTS = [
         "alt": "Lamborghini Aventador — lamborghini aventador r2"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "Modelled entirely in Blender, with procedural materials and textures created in Blender.",
+    "software": [
+      "Blender"
+    ]
   },
   {
     "id": "stylized-car",
@@ -179,7 +203,12 @@ window.PROJECTS = [
         "alt": "Stylized Car — Car1 Wire Frame"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "Modelled in Blender and textured using Blender and Substance 3D Painter.",
+    "software": [
+      "Blender",
+      "Substance 3D Painter"
+    ]
   },
   {
     "id": "stylized-horse-cart",
@@ -224,7 +253,12 @@ window.PROJECTS = [
         "alt": "Stylized Horse Cart — Wire Frame1"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "I sculpted, retopologized and UV-unwrapped the model in Blender, then baked mesh maps and hand-painted the textures in Substance 3D Painter.",
+    "software": [
+      "Blender",
+      "Substance 3D Painter"
+    ]
   },
   {
     "id": "2d-artwork-11",
@@ -237,7 +271,12 @@ window.PROJECTS = [
         "alt": "2D Artwork 11"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "An illustration created in Adobe Photoshop using visual references.",
+    "credits": "Illustration by Jann Railey De Chavez (LUMN). The original reference sources can no longer be located, so their creators are currently unidentified.",
+    "software": [
+      "Adobe Photoshop"
+    ]
   },
   {
     "id": "2d-artwork-15",
@@ -250,7 +289,12 @@ window.PROJECTS = [
         "alt": "2D Artwork 15"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "An illustration created in Adobe Photoshop using visual references.",
+    "credits": "Illustration by Jann Railey De Chavez (LUMN). The original reference sources can no longer be located, so their creators are currently unidentified.",
+    "software": [
+      "Adobe Photoshop"
+    ]
   },
   {
     "id": "2d-artwork-24",
@@ -263,7 +307,12 @@ window.PROJECTS = [
         "alt": "2D Artwork 24"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "An illustration created in Adobe Photoshop using visual references.",
+    "credits": "Illustration by Jann Railey De Chavez (LUMN). The original reference sources can no longer be located, so their creators are currently unidentified.",
+    "software": [
+      "Adobe Photoshop"
+    ]
   },
   {
     "id": "aircraft-cinematic",
@@ -278,12 +327,13 @@ window.PROJECTS = [
         "caption": "Aircraft Cinematic"
       }
     ],
-    "placeholder": false
+    "placeholder": false,
+    "description": "An aircraft cinematic presented as a video."
   },
   {
     "id": "cave-ruins",
     "title": "Cave Ruins",
-    "category": "Animation",
+    "category": "Environments",
     "thumbnail": "assets/images/previews/cave.webp",
     "images": [],
     "videos": [
@@ -292,6 +342,82 @@ window.PROJECTS = [
         "poster": "assets/images/previews/cave.webp",
         "caption": "Cave Ruins"
       }
+    ],
+    "placeholder": false,
+    "description": "A video presentation of my Cave Ruins environment."
+  },
+  {
+    "id": "dragon-berylth",
+    "title": "Dragon Berylth",
+    "category": "Other Projects",
+    "thumbnail": "assets/images/other-projects/Dragon Berylth/ModelPoseRender.webp",
+    "images": [
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/ModelPoseRender.webp",
+        "alt": "Dragon Berylth — Model Pose Render"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/Concept.webp",
+        "alt": "Dragon Berylth — concept artwork by Prinz"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/Front.png",
+        "alt": "Dragon Berylth — Front"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/ModelPoseClay.webp",
+        "alt": "Dragon Berylth — Model Pose Clay"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/SideFaceZoom.png",
+        "alt": "Dragon Berylth — Side Face Zoom"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/TopView.png",
+        "alt": "Dragon Berylth — Top View"
+      },
+      {
+        "src": "assets/images/other-projects/Dragon Berylth/Wings.png",
+        "alt": "Dragon Berylth — Wings"
+      }
+    ],
+    "description": "I sculpted and retopologized Dragon Berylth in Blender, based on a concept by Prinz.",
+    "credits": "Concept and texturing by Prinz. Sculpting and retopology by Jann Railey De Chavez (LUMN).",
+    "software": [
+      "Blender"
+    ],
+    "placeholder": false
+  },
+  {
+    "id": "lucy-fan-art",
+    "title": "Lucy — Fan Art",
+    "category": "Sculpt",
+    "thumbnail": "assets/images/sculpt/Lucy Fanart/Front.png",
+    "images": [
+      {
+        "src": "assets/images/sculpt/Lucy Fanart/Front.png",
+        "alt": "Lucy — Front"
+      },
+      {
+        "src": "assets/images/sculpt/Lucy Fanart/FrontZoom.png",
+        "alt": "Lucy — Front Zoom"
+      },
+      {
+        "src": "assets/images/sculpt/Lucy Fanart/Side.png",
+        "alt": "Lucy — Side"
+      }
+    ],
+    "videos": [
+      {
+        "src": "assets/images/sculpt/Lucy Fanart/Turnaround.mp4",
+        "poster": "assets/images/sculpt/Lucy Fanart/Front.png",
+        "caption": "Lucy — sculpt turnaround"
+      }
+    ],
+    "description": "A fan-art sculpt created in Blender, inspired by another artist’s 3D interpretation of Lucy.",
+    "credits": "Sculpt by Jann Railey De Chavez (LUMN). The artist behind the reference model can no longer be located and is currently unidentified.",
+    "software": [
+      "Blender"
     ],
     "placeholder": false
   },

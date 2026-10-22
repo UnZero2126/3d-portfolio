@@ -17,7 +17,7 @@
   else $('#email').append(text('span', 'Your email goes here', 'placeholder-contact'));
   (profile.socials || []).forEach(s => { const href = safeWeb(s.url); if (href) { const a = text('a', s.label + ' ↗'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; $('#socials').append(a); } else { const el = text('span', s.label, 'social-placeholder'); el.append(text('small', 'ADD YOUR LINK')); $('#socials').append(el); } });
   const featured = projects.find(p => p.featured) || projects[0];
-  if (featured) { $('#featured-link').href = '#project/' + encodeURIComponent(featured.id); const img = image(featured.heroImage || featured.images?.[0]?.src || featured.thumbnail, featured.title, true); img.id = 'featured-image'; img.fetchPriority = 'high'; $('#featured-image').replaceWith(img); setText('#featured-title', featured.title); setText('#featured-category', featured.category); $('.art-top').lastElementChild.textContent = '01 / ' + String(projects.length).padStart(2, '0'); }
+
   let active = 'All work';
   const categories = ['All work', ...new Set(projects.map(p => p.category || 'Other Projects'))];
   function renderGallery() {

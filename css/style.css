@@ -160,3 +160,31 @@ dialog.image-viewer{width:96vw;max-width:none;height:94dvh;max-height:94dvh;over
  .zoom-toolbar{gap:6px;padding:8px}
  .zoom-toolbar>span{flex-basis:100%}
 }
+
+/* Align the portfolio introduction with the section heading. */
+.section-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,480px);align-items:center;gap:32px}
+.section-heading>p{margin:0;max-width:none;text-align:right;justify-self:end;line-height:1.7}
+/* Project identity on the left, contribution and credit details on the right. */
+.project-head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px 36px;align-items:start}
+.project-head>.eyebrow,.project-head>h2,.project-head>.sample-note{grid-column:1;margin:0}
+.project-head>.project-description{grid-column:2;grid-row:1/4;margin:0;font-size:15px;line-height:1.8}
+.project-head>.project-meta{grid-column:1/-1;margin:10px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.project-meta>div{min-width:0;max-width:100%}.project-meta dd{overflow-wrap:anywhere}
+.showcase{position:relative;min-width:0}
+.showcase-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:6px 0 0}
+.showcase-controls button{min-width:44px;min-height:44px;padding:8px 14px;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:24px}
+.showcase-controls span{font-size:12px;color:var(--muted);min-width:52px;text-align:center}
+.showcase-controls button:hover{border-color:var(--accent)}
+@media(prefers-reduced-motion:no-preference){
+ .card-title{transition:transform 160ms var(--ease-out)}
+ .showcase-controls button{transition:transform 160ms var(--ease-out),border-color 160ms ease}
+ .showcase-controls button:active{transform:scale(.97)}
+ @media(hover:hover) and (pointer:fine){.card:hover .card-title{transform:translateY(-3px)}}
+}
+@media(max-width:700px){
+ .section-heading{grid-template-columns:1fr;gap:16px}
+ .section-heading>p{text-align:right;justify-self:end;max-width:36ch}
+ .project-head{grid-template-columns:1fr;gap:16px}
+ .project-head>.project-description{grid-column:1;grid-row:auto}
+ .project-head>.project-meta{grid-column:1}
+}
