@@ -4,11 +4,11 @@ window.PROJECTS = [
     "id": "ruins-environment",
     "title": "Ruins Environment",
     "category": "Environments",
-    "thumbnail": "assets/images/previews/ruins-environment.webp",
+    "thumbnail": "assets/images/environment/Environment_Ruins.png",
     "images": [
       {
-        "src": "assets/images/environment/Ruins_Environment.png",
-        "alt": "Ruins Environment"
+        "src": "assets/images/environment/Environment_Ruins.png",
+        "alt": "Environment Ruins — updated high-resolution render"
       }
     ],
     "featured": true,
@@ -397,6 +397,46 @@ window.PROJECTS = [
     "software": [
       "Adobe Photoshop"
     ]
+  },
+  {
+    "id": "empty-frame-animation",
+    "title": "The Empty Frame — Animation Sequence",
+    "category": "Animation",
+    "thumbnail": "assets/images/previews/echo.webp",
+    "playlist": [
+      {
+        "src": "assets/videos/anim_scene14.mp4",
+        "label": "Scene 14"
+      },
+      {
+        "src": "assets/videos/anim_scene16.mp4",
+        "label": "Scene 16"
+      },
+      {
+        "src": "assets/videos/anim_scene17_v01.mp4",
+        "label": "Scene 17"
+      }
+    ],
+    "description": "A continuous sequence of Scenes 14, 16 and 17 from The Empty Frame. Select Play to watch all three clips consecutively.",
+    "credits": "Animation Director: Jann Railey De Chavez (LUMN). Animated film by Impastory Studios & Marionette Motion.",
+    "type": "The Empty Frame · Animated film",
+    "placeholder": false
+  },
+  {
+    "id": "puppet-strings-film",
+    "title": "Puppet Strings — Animated Film",
+    "category": "Animation",
+    "thumbnail": "assets/images/previews/rai.webp",
+    "embeds": [
+      {
+        "url": "https://www.youtube-nocookie.com/embed/z9NGbjwC6WQ",
+        "title": "Puppet Strings — watch the animated film"
+      }
+    ],
+    "description": "An animated film by Marionette Motion. Watch the full film and explore the contributions behind its production.",
+    "credits": "Producer, Film Editor, sole Rigger, sole Character Artist, 3D Modeller, Environment Artist, Lighting Artist and 3D Animator: Jann Railey De Chavez (LUMN).",
+    "type": "Puppet Strings · Animated film",
+    "placeholder": false
   },
   {
     "id": "aircraft-cinematic",
